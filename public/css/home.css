@@ -7,7 +7,7 @@ button{
     display: inline-block;
   padding: 10px 20px;
   font-size: 16px;
-  background-color: #3498db;
+  background-color: #333;;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -100,9 +100,18 @@ main {
 
 .created-date {
     font-size: 12px;
-    color: #777;
+    color: orange;
+    /* color: #777; */
+    /* text-align: right; */
 }
 
 #search{
     margin: 10px 0;
 }
+
+.list-element a{
+ float: left;
+}
+.list-element span{
+    float: right;
+   }

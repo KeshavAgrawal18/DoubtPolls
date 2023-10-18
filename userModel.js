@@ -7,8 +7,19 @@ const UserSchema = new mongoose.Schema({
   password: String,
 });
 
+const ProblemSchema = new mongoose.Schema({
+  question: String,
+  option1: String,
+  option2: String,
+});
+
 UserSchema.plugin(passportLocalMongoose);
 
 const User = new mongoose.model("User", UserSchema);
 
-module.exports = User;
+const Problem = new mongoose.model("Problem", ProblemSchema);
+
+module.exports ={ 
+  user: User,
+  problem: Problem
+  }

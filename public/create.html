@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/accounts.css" />
+    <title>Create</title>
+  </head>
+  <body>
+    <div class="container">
+      <h4>CREATE POLL</h4>
+      <form action="/create" class="login-form" method="post">
+        <div class="input-group">
+          <label for="question">Question</label>
+          <input type="text" id="question" name="question" required />
+        </div>
+        <div class="input-group">
+          <label for="option1">Option1</label>
+          <input type="text" id="option1" name="option1" required />
+        </div>
+        <div class="input-group">
+          <label for="Option2">Option2</label>
+          <input type="text" id="Option2" name="Option2" required />
+        </div>
+        <button type="submit">Create</button>
+      </form>
+    </div>
+  </body>
+</html>

@@ -33,14 +33,16 @@
           <button><a id="create-poll" href="/create">Create a poll</a></button>
         </div>
         <ul>
+            <% for(var i=0; i<problems.length ; i++) { %>
           <li>
             <div class="list-element">
-              <a href="">Apple vs Samsung</a>
+              <a href=""><%= problems[i].question %></a>
               <span class="created-date"
                 >Created on: Oct. 10, 2023, 5:57 p.m.</span
               >
             </div>
           </li>
+          <% } %>
         </ul>
       </div>
     </main>
