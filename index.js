@@ -73,6 +73,26 @@ app.post("/register", (req, res) => {
   );
 });
 
+app.post("/login", (req, res) => {
+  const user = new User({
+    email: req.body.email,
+    password: req.body.password
+  });
+
+  req.login(user, (err) => {
+    if(err){
+      console.log(err);
+    } else {
+      passport.authenticate("local")(req, res, function () {
+        console.log(user);
+        res.redirect("/registered");    
+    });
+  }
+  });
+
+
+});
+
 app.listen(PORT, () => {
   console.log("App is Listening on port " + PORT);
   console.log("http://localhost:" + PORT);
