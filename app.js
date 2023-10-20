@@ -35,7 +35,6 @@ const db = mongoose.connection;
 
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", function () {
-  // We are connected1
   console.log("Connected to MongoDB...");
 });
 
@@ -47,7 +46,6 @@ passport.deserializeUser(User.deserializeUser());
 app.get("/", (req, res) => {
   Problem.find()
     .then((problems) => {
-      // console.log(problems);
       res.render("index", {
         user: req.user,
         problems: problems,
@@ -56,16 +54,18 @@ app.get("/", (req, res) => {
     .catch((error) => {
       console.error(error);
     });
-
-  // res.sendFile(__dirname + "/public/home/index.html");
 });
 
 app.get("/register", (req, res) => {
-  res.sendFile(__dirname + "/public/accounts/register.html");
+  res.render("accounts", {
+    entryPoint: "register"
+  });
 });
 
 app.get("/login", (req, res) => {
-  res.sendFile(__dirname + "/public/accounts/login.html");
+  res.render("accounts", {
+    entryPoint: "login"
+  });
 });
 
 app.get("/registered", (req, res) => {
