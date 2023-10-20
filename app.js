@@ -44,8 +44,9 @@ passport.deserializeUser(User.deserializeUser());
 app.get("/", (req, res) => {
   Problem.find()
     .then((problems) => {
-      console.log(problems);
+      // console.log(problems);
       res.render("index", {
+        user: req.user,
         problems: problems,
       });
     })
@@ -65,10 +66,14 @@ app.get("/login", (req, res) => {
 });
 
 app.get("/registered", (req, res) => {
-  res.sendFile(__dirname + "/public/registered.html");
+  // res.sendFile(__dirname + "/public/registered.html");
+  res.redirect("/");
 });
 
 app.get("/create", (req, res) => {
+  // console.log(req);
+  // console.log(req.user);
+
   if (req.isAuthenticated()) {
     res.sendFile(__dirname + "/public/create.html");
   } else {
@@ -76,8 +81,17 @@ app.get("/create", (req, res) => {
   }
 });
 
+app.get("/logout", (req, res) => {
+  req.logOut((err) => {
+    if (err) {
+      console.log(err);
+    }
+  });
+  res.redirect("/");
+});
+
 app.post("/register", (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   User.register(
     { username: req.body.username, email: req.body.email },
     req.body.password,
@@ -88,7 +102,7 @@ app.post("/register", (req, res) => {
       } else {
         passport.authenticate("local")(req, res, function () {
           console.log(user);
-          res.redirect("/registered");
+          res.redirect("/");
         });
       }
     }
@@ -97,6 +111,7 @@ app.post("/register", (req, res) => {
 
 app.post("/login", (req, res) => {
   const user = new User({
+    username: req.body.username,
     email: req.body.email,
     password: req.body.password,
   });
@@ -107,14 +122,22 @@ app.post("/login", (req, res) => {
     } else {
       passport.authenticate("local")(req, res, function () {
         console.log(user);
-        res.redirect("/registered");
+        res.redirect("/");
       });
     }
   });
 });
 
 app.post("/create", (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
+  // const chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  // const linkLength = 12;
+  // let link = "";
+  // for (let i = 0; i < linkLength; i++) {
+  //   var randomNumber = Math.floor(Math.random() * chars.length);
+  //   link += chars.substring(r andomNumber, randomNumber +1);
+  //  }
+  //  console.log(link);
   const problem = new Problem({
     question: req.body.question,
     option1: req.body.option1,

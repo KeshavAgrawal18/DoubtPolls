@@ -54,7 +54,7 @@ nav {
     margin: 0;
 }
 
-nav ul {
+nav ul{
     list-style: none;
     display: flex;
 }
@@ -100,9 +100,7 @@ main {
 
 .created-date {
     font-size: 12px;
-    color: orange;
-    /* color: #777; */
-    /* text-align: right; */
+    color: #777;
 }
 
 #search{

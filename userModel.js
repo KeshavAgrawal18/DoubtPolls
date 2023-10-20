@@ -19,7 +19,7 @@ const User = new mongoose.model("User", UserSchema);
 
 const Problem = new mongoose.model("Problem", ProblemSchema);
 
-module.exports ={ 
+module.exports = {
   user: User,
-  problem: Problem
-  }
+  problem: Problem,
+};

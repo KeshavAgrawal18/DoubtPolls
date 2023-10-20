@@ -2,8 +2,9 @@
   "name": "doubtpolls",
   "version": "1.0.0",
   "description": "This software is for conducting polls between two conflicting topics afer authentication.",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Keshav Agrawal",
