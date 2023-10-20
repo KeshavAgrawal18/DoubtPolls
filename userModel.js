@@ -8,9 +8,17 @@ const UserSchema = new mongoose.Schema({
 });
 
 const ProblemSchema = new mongoose.Schema({
+  id: String,
+  time: String,
   question: String,
-  option1: String,
-  option2: String,
+  option1: {
+    name: String, 
+    voteCount: Number,
+  },
+  option2: {
+    name: String, 
+    voteCount: Number,
+  },
 });
 
 UserSchema.plugin(passportLocalMongoose);

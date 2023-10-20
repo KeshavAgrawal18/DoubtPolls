@@ -1,115 +1,287 @@
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
-button{
-    display: inline-block;
+button {
+  display: inline-block;
   padding: 10px 20px;
   font-size: 16px;
-  background-color: #333;;
+  background-color: #333;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
-#create-poll{
-    text-decoration: none;
-    color: #fff;
+#create-poll {
+  text-decoration: none;
+  color: #fff;
 }
 
 button:hover {
-    background-color: #2980b9;
-  }
-
+  background-color: #4a4a4a;
+}
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f7f7f7;
+  font-family: Arial, sans-serif;
+  background-color: #f7f7f7;
 }
 
 header {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 0;
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
 }
-nav ul li a{
-    text-decoration: none;
-    color: white;
-    margin: 10px;
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  margin: 10px;
 }
 
 nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-    color: w;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  color: w;
 }
 
 .logo h1 {
-    font-size: 24px;
-    font-weight: bold;
-    margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
 }
 
-nav ul{
-    list-style: none;
-    display: flex;
+nav ul {
+  list-style: none;
+  display: flex;
 }
-
 
 nav ul li a:hover {
-    color: #f7f7f7;
+  color: #f7f7f7;
 }
 
 main {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
 .actions {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .actions input[type="text"] {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 70%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 70%;
 }
 
-
 .list-element a {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-    transition: color 0.3s;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  transition: color 0.3s;
 }
 
 .list-element a:hover {
-    color: #555;
+  color: #555;
 }
 
 .created-date {
-    font-size: 12px;
-    color: #777;
+  font-size: 12px;
+  color: #777;
 }
 
-#search{
-    margin: 10px 0;
+#search {
+  margin: 10px 0;
 }
 
-.list-element a{
- float: left;
+.list-element a {
+  float: left;
 }
-.list-element span{
-    float: right;
-   }
+.list-element span {
+  float: right;
+}
+
+.choice {
+  padding-top: 5%;
+  padding-left: 15%;
+  padding-right: 15%;
+  text-align: center;
+}
+.choice h1 {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.choice input[type="radio"] {
+  display: none;
+}
+.choice label span {
+  align-items: center;
+  margin-bottom: 5px;
+  cursor: pointer;
+  display: inline-flex;
+  padding: 7px 10px 7px 10px;
+  border-radius: 31px;
+  transition: 0.25 ease;
+}
+.choice label span:hover,
+input[type="radio"]:checked + span {
+  background-color: #d6d6e5;
+}
+.choice label span::before {
+  content: "";
+  background-color: #fff;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 10px;
+  transition: 0.25 ease;
+  box-shadow: inset 0 0 0 2px #00005c;
+}
+.choice input[type="radio"]:checked + span::before {
+  box-shadow: inset 0 0 0 4px #00005c;
+}
+.choice input[type="submit"] {
+  margin-top: 10px;
+  padding: 3px;
+  width: 50px;
+  border-radius: 31px;
+  background: none;
+  border: 2px solid black;
+  outline: none;
+}
+.choice input:hover {
+  background: #00005c;
+  color: white;
+}
+.stats {
+  padding-top: 5%;
+  padding-left: 15%;
+  padding-right: 15%;
+  text-align: center;
+}
+.stats h1 {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.stats ul {
+  padding: 20px;
+  list-style: none;
+}
+
+.stats p {
+  padding-top: 10px;
+  font-weight: bold;
+}
+.actions {
+  margin-top: 25px;
+  margin-right: 25px;
+  margin-left: 25px;
+  padding-bottom: 25px;
+}
+.actions form {
+  float: left;
+}
+.actions form button {
+  margin-left: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 20px;
+  border: none;
+  border: 1px solid #d6d6e5;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.actions form button:hover {
+  background-color: #d6d6e5;
+  color: #00005c;
+  border: 2px solid #00005c;
+}
+.actions form input {
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 20px;
+  border: none;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.actions button {
+  float: right;
+  margin-left: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 20px;
+  border: none;
+  border: 2px solid #00005c;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.actions button:hover {
+  background-color: #d6d6e5;
+  color: #00005c;
+}
+#create_poll {
+  color: white;
+  font-size: 15px;
+  padding-right: 15px;
+}
+#create_poll:hover {
+  background-color: #d6d6e5;
+  color: #00005c;
+}
+.form-box {
+  width: 350px;
+  position: absolute;
+  margin-top: 7%;
+  margin-left: 39%;
+  background-color: white;
+  border-radius: 15px;
+}
+.form-box h3 {
+  text-align: center;
+  padding-top: 15px;
+  text-transform: uppercase;
+  font-size: 25px;
+}
+.form-box form {
+  width: 300px;
+  margin-left: 25px;
+}
+.form-box label {
+  display: flex;
+  padding-bottom: 5px;
+}
+.form-box form input {
+  width: 100%;
+  padding: 7px;
+  border: none;
+  border: 1px solid gray;
+  border-radius: 6px;
+  outline: none;
+  margin-bottom: 20px;
+}
+.form-box button {
+  margin-left: 80px;
+  width: 50%;
+  padding: 7px;
+  border: none;
+  border: 1px solid gray;
+  border-radius: 6px;
+  outline: none;
+  margin-bottom: 20px;
+}
+input[type="submit"],
+button {
+  border: none;
+  background-color: #033747;
+  font-size: 18px;
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Question detail</title>
+    <link rel="stylesheet" href="/css/home.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo">
+          <h1>DoubtPolls</h1>
+        </div>
+        <ul>
+          <% if(typeof user != 'undefined') { %>
+          <li>Hello <%= user.username %></li>
+          <li><a href="/logout/">Logout</a></li>
+          <% } else { %>
+          <li><a href="/login/">Login</a></li>
+          <li><a href="/register/">Register</a></li>
+          <% } %>
+        </ul>
+      </nav>
+    </header>
+    <div class="choice">
+      <form action="" method="post">
+        <input type="hidden" />
+        <fieldset>
+          <legend><h1><%= problems.question %></h1></legend>
+
+          <label for="choice1">
+            <input type="radio" name="choice" id="choice1" value="42" />
+            <span><%= problems.option1.name %></span>
+          </label>
+          <br />
+
+          <label for="choice2">
+            <input type="radio" name="choice" id="choice2" value="43" />
+            <span><%= problems.option2.name %></span>
+          </label>
+          <br />
+        </fieldset>
+        <input type="submit" value="Vote" />
+      </form>
+    </div>
+    <div class="stats">
+      <fieldset>
+        <legend><h1>Poll stats</h1></legend>
+        <p>Choice -- Total votes</p>
+        <ul>
+          <li>
+            <%= problems.option1.name %> -- <%= problems.option1.voteCount %>
+            votes
+          </li>
+
+          <li>
+            <%= problems.option2.name %> -- <%= problems.option2.voteCount %>
+            votes
+          </li>
+        </ul>
+      </fieldset>
+    </div>
+  </body>
+</html>

@@ -41,9 +41,11 @@
             <% for(var i=0; i<problems.length ; i++) { %>
           <li>
             <div class="list-element">
-              <a href=""><%= problems[i].question %></a>
+              <a href="problems/<%= problems[i].id %>">
+                <%= problems[i].question %>
+              </a>
               <span class="created-date"
-                >Created on: Oct. 10, 2023, 5:57 p.m.</span
+                >Created on: <%= problems[i].time %></span
               >
             </div>
           </li>

@@ -9,6 +9,9 @@ const modul = require("./userModel");
 const User = modul.user;
 const Problem = modul.problem;
 const PORT = process.env.PORT;
+const modu = require("./function");
+const ranNumGenerator = modu.rng;
+const time = modu.time;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(
@@ -32,7 +35,7 @@ const db = mongoose.connection;
 
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", function () {
-  // We are connected
+  // We are connected1
   console.log("Connected to MongoDB...");
 });
 
@@ -71,9 +74,6 @@ app.get("/registered", (req, res) => {
 });
 
 app.get("/create", (req, res) => {
-  // console.log(req);
-  // console.log(req.user);
-
   if (req.isAuthenticated()) {
     res.sendFile(__dirname + "/public/create.html");
   } else {
@@ -88,6 +88,19 @@ app.get("/logout", (req, res) => {
     }
   });
   res.redirect("/");
+});
+
+app.get("/problems/:id", (req, res) => {
+  Problem.find({ id: req.params.id })
+    .then((problems) => {
+      res.render("problem", {
+        user: req.user,
+        problems: problems[0],
+      });
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 });
 
 app.post("/register", (req, res) => {
@@ -129,20 +142,20 @@ app.post("/login", (req, res) => {
 });
 
 app.post("/create", (req, res) => {
-  // console.log(req.body);
-  // const chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  // const linkLength = 12;
-  // let link = "";
-  // for (let i = 0; i < linkLength; i++) {
-  //   var randomNumber = Math.floor(Math.random() * chars.length);
-  //   link += chars.substring(r andomNumber, randomNumber +1);
-  //  }
-  //  console.log(link);
   const problem = new Problem({
+    id: ranNumGenerator,
+    time: time,
     question: req.body.question,
-    option1: req.body.option1,
-    option2: req.body.option2,
+    option1: {
+      name: req.body.option1,
+      voteCount: "0",
+    },
+    option2: {
+      name: req.body.option2,
+      voteCount: "0",
+    },
   });
+  console.log(problem);
   problem.save();
   // res.write("Poll created");
   res.redirect("/");
