@@ -26,7 +26,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.set("view engine", "ejs");
 
-mongoose.connect("mongodb://127.0.0.1:27017/passwordDB", {
+mongoose.connect("mongodb+srv://keshavagrawal9471408042:" + process.env.PASSWORD + "@cluster0.1dtrfjl.mongodb.net/userDB", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
