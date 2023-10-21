@@ -58,13 +58,13 @@ app.get("/", (req, res) => {
 
 app.get("/register", (req, res) => {
   res.render("accounts", {
-    entryPoint: "register"
+    entryPoint: "register",
   });
 });
 
 app.get("/login", (req, res) => {
   res.render("accounts", {
-    entryPoint: "login"
+    entryPoint: "login",
   });
 });
 
@@ -93,9 +93,16 @@ app.get("/logout", (req, res) => {
 app.get("/problems/:id", (req, res) => {
   Problem.find({ id: req.params.id })
     .then((problems) => {
+      let message = "";
+      if(req.query.message == "Success") {
+        message = "Vote Successfullly given";
+
+      }
+
       res.render("problem", {
         user: req.user,
         problems: problems[0],
+        message: message,
       });
     })
     .catch((error) => {
@@ -159,6 +166,30 @@ app.post("/create", (req, res) => {
   problem.save();
   // res.write("Poll created");
   res.redirect("/");
+});
+
+app.post("/problems/:id", (req, res) => {
+  if (req.isAuthenticated()) {
+    Problem.find({ id: req.params.id })
+      .then((problems) => {
+        const option = req.body.choice;
+        if (option === "option1") {
+          problems[0].option1.voteCount++;
+        } else {
+          problems[0].option2.voteCount++;
+        }
+        Problem.updateOne({ id: req.params.id }, problems[0]).then((result) => {
+          console.log(result);
+        });
+        // res.send("Vote is successfully added");
+        res.redirect("/problems/" + req.params.id + "?message=Success");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  } else {
+    res.redirect("/login");
+  }
 });
 
 app.listen(PORT, () => {
