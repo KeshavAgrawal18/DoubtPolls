@@ -94,9 +94,11 @@ app.get("/problems/:id", (req, res) => {
   Problem.find({ id: req.params.id })
     .then((problems) => {
       let message = "";
-      if(req.query.message == "Success") {
+      if (req.query.message == "Success") {
         message = "Vote Successfullly given";
-
+      }
+      if (req.query.message == "failure") {
+        message = "You have already voted";
       }
 
       res.render("problem", {
@@ -172,17 +174,37 @@ app.post("/problems/:id", (req, res) => {
   if (req.isAuthenticated()) {
     Problem.find({ id: req.params.id })
       .then((problems) => {
-        const option = req.body.choice;
-        if (option === "option1") {
-          problems[0].option1.voteCount++;
-        } else {
-          problems[0].option2.voteCount++;
+        let check = 0;
+        const arr = problems[0].usersVoted;
+        for (let i in arr) {
+          if (arr[i] === req.user.username) {
+            console.log("problem after matching: " + problems[0]);
+            // res.redirect("/problems/" + req.params.id + "?message=failure");
+            // res.redirect("/");
+            check = 1;
+          }
         }
-        Problem.updateOne({ id: req.params.id }, problems[0]).then((result) => {
-          console.log(result);
-        });
-        // res.send("Vote is successfully added");
-        res.redirect("/problems/" + req.params.id + "?message=Success");
+        if (check == 0) {
+          const option = req.body.choice;
+          if (option === "option1") {
+            problems[0].option1.voteCount++;
+          } else {
+            problems[0].option2.voteCount++;
+          }
+
+          // console.log("username: " + req.user.username);
+          problems[0].usersVoted.push(req.user.username);
+          console.log(problems[0]);
+          Problem.updateOne({ id: req.params.id }, problems[0]).then(
+            (result) => {
+              console.log("result: ");
+              console.log(result);
+            }
+          );
+          res.redirect("/problems/" + req.params.id + "?message=Success");
+        } else {
+          res.redirect("/problems/" + req.params.id + "?message=failure");
+        }
       })
       .catch((error) => {
         console.error(error);

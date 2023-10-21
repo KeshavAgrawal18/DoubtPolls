@@ -12,13 +12,14 @@ const ProblemSchema = new mongoose.Schema({
   time: String,
   question: String,
   option1: {
-    name: String, 
+    name: String,
     voteCount: Number,
   },
   option2: {
-    name: String, 
+    name: String,
     voteCount: Number,
   },
+  usersVoted: [String],
 });
 
 UserSchema.plugin(passportLocalMongoose);
