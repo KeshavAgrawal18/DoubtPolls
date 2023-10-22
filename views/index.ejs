@@ -27,11 +27,11 @@
     <main>
       <div class="question-list">
         <div class="actions">
-          <form method="post" action="/">
+          <form method="post" action="/search">
             <input
               type="text"
               placeholder="Search problem by name"
-              name="poll"
+              name="query"
             />
             <button type="submit" id="search">Search</button>
           </form>
@@ -44,9 +44,7 @@
               <a href="problems/<%= problems[i].id %>/">
                 <%= problems[i].question %>
               </a>
-              <span class="created-date"
-                >Created on: <%= problems[i].time %></span
-              >
+              <span class="created-date">Created on: <%= problems[i].time %></span>
             </div>
           </li>
           <% } %>

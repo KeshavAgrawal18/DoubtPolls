@@ -26,7 +26,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.set("view engine", "ejs");
 
-mongoose.connect("mongodb+srv://keshavagrawal9471408042:" + process.env.PASSWORD + "@cluster0.1dtrfjl.mongodb.net/userDB", {
+mongoose.connect(process.env.MONGODB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -111,9 +111,26 @@ app.get("/problems/:id", (req, res) => {
       console.error(error);
     });
 });
+app.post("/search", (req, res) => {
+  Problem.find()
+    .then((problems) => {
+      let problems_result = [];
+      for (let i in problems) {
+        if (problems[i].question.includes(req.body.query)) {
+          problems_result.push(problems[i]);
+        }
+      }
+      res.render("index", {
+        user: req.user,
+        problems: problems_result,
+      });
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+});
 
 app.post("/register", (req, res) => {
-  // console.log(req.body);
   User.register(
     { username: req.body.username, email: req.body.email },
     req.body.password,
@@ -123,7 +140,7 @@ app.post("/register", (req, res) => {
         res.redirect("/register");
       } else {
         passport.authenticate("local")(req, res, function () {
-          console.log(user);
+          // console.log(user);
           res.redirect("/");
         });
       }
@@ -143,7 +160,6 @@ app.post("/login", (req, res) => {
       console.log(err);
     } else {
       passport.authenticate("local")(req, res, function () {
-        console.log(user);
         res.redirect("/");
       });
     }
@@ -164,7 +180,6 @@ app.post("/create", (req, res) => {
       voteCount: "0",
     },
   });
-  console.log(problem);
   problem.save();
   // res.write("Poll created");
   res.redirect("/");
@@ -178,7 +193,7 @@ app.post("/problems/:id", (req, res) => {
         const arr = problems[0].usersVoted;
         for (let i in arr) {
           if (arr[i] === req.user.username) {
-            console.log("problem after matching: " + problems[0]);
+            // console.log("problem after matching: " + problems[0]);
             // res.redirect("/problems/" + req.params.id + "?message=failure");
             // res.redirect("/");
             check = 1;
@@ -194,11 +209,11 @@ app.post("/problems/:id", (req, res) => {
 
           // console.log("username: " + req.user.username);
           problems[0].usersVoted.push(req.user.username);
-          console.log(problems[0]);
+          // console.log(problems[0]);
           Problem.updateOne({ id: req.params.id }, problems[0]).then(
             (result) => {
-              console.log("result: ");
-              console.log(result);
+              // console.log("result: ");
+              // console.log(result);
             }
           );
           res.redirect("/problems/" + req.params.id + "?message=Success");
