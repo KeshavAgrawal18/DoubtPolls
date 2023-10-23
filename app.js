@@ -58,13 +58,13 @@ app.get("/", (req, res) => {
 
 app.get("/register", (req, res) => {
   res.render("accounts", {
-    entryPoint: "register",
+    entryPoint: "Register",
   });
 });
 
 app.get("/login", (req, res) => {
   res.render("accounts", {
-    entryPoint: "login",
+    entryPoint: "Login",
   });
 });
 
@@ -167,19 +167,25 @@ app.post("/login", (req, res) => {
 });
 
 app.post("/create", (req, res) => {
-  const problem = new Problem({
+  let count = req.query.count;
+  let problem = new Problem({
     id: ranNumGenerator,
     time: time,
     question: req.body.question,
-    option1: {
-      name: req.body.option1,
-      voteCount: "0",
-    },
-    option2: {
-      name: req.body.option2,
-      voteCount: "0",
-    },
+    choice: [],
   });
+  // console.log(problem);
+  // console.log(req.body);
+  // console.log("count: " + count);
+  for (let i = 1; i <= count; i++) {
+    let cur = "choice" + i;
+    problem.choice.push({
+      name: req.body[cur],
+      voteCount: "0",
+    });
+  }
+  // console.log(problem);
+
   problem.save();
   // res.write("Poll created");
   res.redirect("/");
@@ -200,12 +206,9 @@ app.post("/problems/:id", (req, res) => {
           }
         }
         if (check == 0) {
-          const option = req.body.choice;
-          if (option === "option1") {
-            problems[0].option1.voteCount++;
-          } else {
-            problems[0].option2.voteCount++;
-          }
+          const choice = req.body.choice;
+          let choice_number = choice[6];
+          problems[0].choice[choice_number].voteCount++;
 
           // console.log("username: " + req.user.username);
           problems[0].usersVoted.push(req.user.username);

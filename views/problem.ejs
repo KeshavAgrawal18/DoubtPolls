@@ -29,40 +29,32 @@
         <input type="hidden" />
         <fieldset>
           <legend><h1><%= problems.question %></h1></legend>
-
-          <label for="choice1">
-            <input type="radio" name="choice" id="choice1" value="option1" required/>
-            <span><%= problems.option1.name %></span>
+          <% for(var i=0; i<problems.choice.length ; i++) { %>
+            <label for="choice<%=i%>">
+              <input type="radio" name="choice" id="choice<%=i%>" value="choice<%=i%>" required/>
+              <span><%= problems.choice[i].name %></span>
           </label>
           <br />
-
-          <label for="choice2">
-            <input type="radio" name="choice" id="choice2" value="option2" />
-            <span><%= problems.option2.name %></span>
-          </label>
-          <br />
+          <% } %>
         </fieldset>
         <input type="submit" value="Vote" />
       </form>
       <br />
       <p><%= message %></p>
       <br />
-
+      
     </div>
     <div class="stats">
       <fieldset>
         <legend><h1>Poll stats</h1></legend>
         <p>Choice -- Total votes</p>
         <ul>
+          <% for(var i=0; i<problems.choice.length ; i++) { %>
           <li>
-            <%= problems.option1.name %> -- <%= problems.option1.voteCount %>
+            <%= problems.choice[i].name %> -- <%= problems.choice[i].voteCount %>
             votes
           </li>
-
-          <li>
-            <%= problems.option2.name %> -- <%= problems.option2.voteCount %>
-            votes
-          </li>
+          <% } %>
         </ul>
       </fieldset>
     </div>

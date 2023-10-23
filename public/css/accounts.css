@@ -59,4 +59,19 @@ button {
 
 button:hover {
     background-color: #4a4a4a;
+
 }
+
+h4 {
+    text-align: center;
+    font-size: 25px;
+}
+
+.button-container {
+    text-align: center;
+  }
+  
+  .button-container button {
+    display: inline-block;
+  }
+  

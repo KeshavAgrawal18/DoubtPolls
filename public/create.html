@@ -9,21 +9,29 @@
   <body>
     <div class="container">
       <h4>CREATE POLL</h4>
-      <form action="/create" class="login-form" method="post">
+      <br />
+      <form action="/create?count=2" id="poll-form" method="post">
         <div class="input-group">
           <label for="question">Question</label>
           <input type="text" id="question" name="question" required />
         </div>
         <div class="input-group">
-          <label for="option1">Option1</label>
-          <input type="text" id="option1" name="option1" required />
+          <label for="choice1">choice</label>
+          <input type="text" id="choice1" name="choice1" required />
         </div>
         <div class="input-group">
-          <label for="option2">Option2</label>
-          <input type="text" id="option2" name="option2" required />
+          <label for="choice2">choice</label>
+          <input type="text" id="choice2" name="choice2" required />
         </div>
-        <button type="submit">Create</button>
+        <div id="additional-choices"></div>
+        <div class="button-container">
+          <button onclick="add_more_choice()">add choice</button>
+          <br>
+          <br>
+          <button type="submit">Create</button>
+        </div>        
       </form>
     </div>
+    <script src="./javascript/choice.js"></script>
   </body>
 </html>

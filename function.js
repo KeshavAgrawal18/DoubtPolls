@@ -11,7 +11,7 @@ const chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 }
 
 const time = function (){
-    const options = {
+    const choices = {
         hour: '2-digit',
         minute: '2-digit',
         hour12: true,
@@ -20,7 +20,7 @@ const time = function (){
         year: 'numeric',
       };
       
-      const formattedTime = new Date().toLocaleString(undefined, options);
+      const formattedTime = new Date().toLocaleString(undefined, choices);
       return formattedTime;    
 }
 
