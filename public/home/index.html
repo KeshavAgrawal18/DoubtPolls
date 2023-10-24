@@ -1,48 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
-    <link rel="stylesheet" href="/css/home.css" />
-  </head>
-  <body>
-    <header>
-      <nav>
-        <div class="logo">
-          <h1>DoubtPolls</h1>
-        </div>
-        <ul>
-          <li><a href="/login/">Login</a></li>
-          <li><a href="/register/">Register</a></li>
-        </ul>
-      </nav>
-    </header>
 
-    <main>
-      <div class="question-list">
-        <div class="actions">
-          <form method="post" action="/">
-            <input
-              type="text"
-              placeholder="Search problem by name"
-              name="poll"
-            />
-            <button type="submit" id="search">Search</button>
-          </form>
-          <button><a id="create-poll" href="/create">Create a poll</a></button>
-        </div>
-        <ul>
-          <li>
-            <div class="list-element">
-              <a href="">Apple vs Samsung</a>
-              <span class="created-date"
-                >Created on: Oct. 10, 2023, 5:57 p.m.</span
-              >
-            </div>
-          </li>
-        </ul>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home</title>
+  <link rel="stylesheet" href="/css/home.css" />
+</head>
+
+<body>
+  <header>
+    <nav>
+      <div class="logo">
+        <h1>DoubtPolls</h1>
       </div>
-    </main>
-  </body>
+      <ul>
+        <li><a href="/login/">Login</a></li>
+        <li><a href="/register/">Register</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="question-list">
+      <div class="actions">
+        <form method="post" action="/">
+          <input type="text" placeholder="Search problem by name" name="poll" />
+          <button type="submit" id="search">Search</button>
+        </form>
+        <button><a id="create-poll" href="/create">Create a poll</a></button>
+      </div>
+      <ul>
+        <li>
+          <div class="list-element">
+            <a href="">Apple vs Samsung</a>
+            <span class="created-date">Created on: Oct. 10, 2023, 5:57 p.m.</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </main>
+  <script src="./javascript/choice.js"></script>
+</body>
+
 </html>

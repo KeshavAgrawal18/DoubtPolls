@@ -1,37 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/accounts.css" />
-    <title>Create</title>
-  </head>
-  <body>
-    <div class="container">
-      <h4>CREATE POLL</h4>
-      <br />
-      <form action="/create?count=2" id="poll-form" method="post">
-        <div class="input-group">
-          <label for="question">Question</label>
-          <input type="text" id="question" name="question" required />
-        </div>
-        <div class="input-group">
-          <label for="choice1">choice</label>
-          <input type="text" id="choice1" name="choice1" required />
-        </div>
-        <div class="input-group">
-          <label for="choice2">choice</label>
-          <input type="text" id="choice2" name="choice2" required />
-        </div>
-        <div id="additional-choices"></div>
-        <div class="button-container">
-          <button onclick="add_more_choice()">add choice</button>
-          <br>
-          <br>
-          <button type="submit">Create</button>
-        </div>        
-      </form>
-    </div>
-    <script src="./javascript/choice.js"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/accounts.css" />
+  <title>Create</title>
+</head>
+
+<body>
+  <div class="container">
+    <h4>CREATE POLL</h4>
+    <br />
+    <form action="/create?count=2" id="poll-form" method="post">
+      <div class="input-group">
+        <label for="question">Question</label>
+        <input type="text" id="question" name="question" required />
+      </div>
+      <div class="input-group">
+        <label for="choice1">choice</label>
+        <input type="text" id="choice1" name="choice1" required />
+      </div>
+      <div class="input-group">
+        <label for="choice2">choice</label>
+        <input type="text" id="choice2" name="choice2" required />
+      </div>
+      <div id="additional-choices"></div>
+      <div class="button-container">
+        <button onclick="add_more_choice()">add choice</button>
+        <br>
+        <br>
+        <button type="submit">Create</button>
+      </div>
+    </form>
+  </div>
+  <script src="./javascript/choice.js"></script>
+</body>
+
 </html>

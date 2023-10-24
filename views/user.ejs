@@ -16,15 +16,8 @@
       </div>
       <ul>
         <% if(typeof user !='undefined' ) { %>
-          <li>Hello
-            <div class="dropdown">
-              <button onclick="myFunction()" class="dropbtn">
-                <%= user.username %>
-              </button>
-              <div id="myDropdown" class="dropdown-content">
-                <a href="/mypolls">My Polls</a>
-              </div>
-            </div>
+          <li>
+            Hello <%= user.username %>
           </li>
           <li><a href="/logout/">Logout</a></li>
           <% } else { %>
@@ -36,31 +29,26 @@
   </header>
 
   <main>
+    <div id="mypoll">My Polls</div>
     <div class="question-list">
-      <div class="actions">
-        <form method="post" action="/search">
-          <input type="text" placeholder="Search problem by name" name="query" />
-          <button type="submit" id="search">Search</button>
-        </form>
-        <button><a id="create-poll" href="/create">Create a poll</a></button>
-      </div>
       <ul>
         <% for(var i=0; i<problems.length ; i++) { %>
-          <div class="list-element">
-            <li>
+          <li>
+            <div class="list-element">
               <a href="problems/<%= problems[i].id %>/">
                 <%= problems[i].question %>
               </a>
               <span class="created-date">Created on: <%= problems[i].time %></span>
-            </li>
-            <span class="owner created-date" style="float: right;">Created by: <%= problems[i].owner %></span>
-            <br>
-          </div>
+            </div>
+          </li>
           <% } %>
       </ul>
+      <% if(problems.length == 0) { %>
+        <div id="no-polls">You have not created any polls.</div>
+
+      <% } %>
     </div>
   </main>
-  <script src="/javascript/choice.js"></script>
 </body>
 
 </html>

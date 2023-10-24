@@ -14,6 +14,7 @@ button {
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
+
 #create-poll {
   text-decoration: none;
   color: #fff;
@@ -33,10 +34,11 @@ header {
   color: #fff;
   padding: 10px 0;
 }
+
 nav ul li a {
   text-decoration: none;
   color: white;
-  margin: 10px;
+  margin: 5px;
 }
 
 nav {
@@ -68,6 +70,7 @@ main {
   padding: 20px;
   background-color: #fff;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  min-height: 50vh;
 }
 
 .actions {
@@ -107,6 +110,7 @@ main {
 .list-element a {
   float: left;
 }
+
 .list-element span {
   float: right;
 }
@@ -117,13 +121,16 @@ main {
   padding-right: 15%;
   text-align: center;
 }
+
 .choice h1 {
   padding-left: 10px;
   padding-right: 10px;
 }
+
 .choice input[type="radio"] {
   display: none;
 }
+
 .choice label span {
   align-items: center;
   margin-bottom: 5px;
@@ -133,10 +140,12 @@ main {
   border-radius: 31px;
   transition: 0.25 ease;
 }
+
 .choice label span:hover,
-input[type="radio"]:checked + span {
+input[type="radio"]:checked+span {
   background-color: #d6d6e5;
 }
+
 .choice label span::before {
   content: "";
   background-color: #fff;
@@ -147,9 +156,11 @@ input[type="radio"]:checked + span {
   transition: 0.25 ease;
   box-shadow: inset 0 0 0 2px #00005c;
 }
-.choice input[type="radio"]:checked + span::before {
+
+.choice input[type="radio"]:checked+span::before {
   box-shadow: inset 0 0 0 4px #00005c;
 }
+
 .choice input[type="submit"] {
   margin-top: 10px;
   padding: 3px;
@@ -159,20 +170,24 @@ input[type="radio"]:checked + span {
   border: 2px solid black;
   outline: none;
 }
+
 .choice input:hover {
   background: #00005c;
   color: white;
 }
+
 .stats {
   padding-top: 5%;
   padding-left: 15%;
   padding-right: 15%;
   text-align: center;
 }
+
 .stats h1 {
   padding-left: 10px;
   padding-right: 10px;
 }
+
 .stats ul {
   padding: 20px;
   list-style: none;
@@ -182,15 +197,18 @@ input[type="radio"]:checked + span {
   padding-top: 10px;
   font-weight: bold;
 }
+
 .actions {
   margin-top: 25px;
   margin-right: 25px;
   margin-left: 25px;
   padding-bottom: 25px;
 }
+
 .actions form {
   float: left;
 }
+
 .actions form button {
   margin-left: 10px;
   padding-left: 10px;
@@ -201,11 +219,13 @@ input[type="radio"]:checked + span {
   padding-top: 5px;
   padding-bottom: 5px;
 }
+
 .actions form button:hover {
   background-color: #d6d6e5;
   color: #00005c;
   border: 2px solid #00005c;
 }
+
 .actions form input {
   padding-left: 10px;
   padding-right: 10px;
@@ -214,6 +234,7 @@ input[type="radio"]:checked + span {
   padding-top: 5px;
   padding-bottom: 5px;
 }
+
 .actions button {
   float: right;
   margin-left: 10px;
@@ -225,19 +246,23 @@ input[type="radio"]:checked + span {
   padding-top: 5px;
   padding-bottom: 5px;
 }
+
 .actions button:hover {
   background-color: #d6d6e5;
   color: #00005c;
 }
+
 #create_poll {
   color: white;
   font-size: 15px;
   padding-right: 15px;
 }
+
 #create_poll:hover {
   background-color: #d6d6e5;
   color: #00005c;
 }
+
 .form-box {
   width: 350px;
   position: absolute;
@@ -246,20 +271,24 @@ input[type="radio"]:checked + span {
   background-color: white;
   border-radius: 15px;
 }
+
 .form-box h3 {
   text-align: center;
   padding-top: 15px;
   text-transform: uppercase;
   font-size: 25px;
 }
+
 .form-box form {
   width: 300px;
   margin-left: 25px;
 }
+
 .form-box label {
   display: flex;
   padding-bottom: 5px;
 }
+
 .form-box form input {
   width: 100%;
   padding: 7px;
@@ -269,6 +298,7 @@ input[type="radio"]:checked + span {
   outline: none;
   margin-bottom: 20px;
 }
+
 .form-box button {
   margin-left: 80px;
   width: 50%;
@@ -279,9 +309,74 @@ input[type="radio"]:checked + span {
   outline: none;
   margin-bottom: 20px;
 }
+
 input[type="submit"],
 button {
   border: none;
-  background-color: #033747;
+  background-color: #034e64;
   font-size: 18px;
+}
+
+#mypoll {
+  background-color: #033747;
+  text-align: center;
+  color: white;
+  margin: 0 40% 0 40%;
+  padding: 8px;
+  font-weight: bold;
+}
+
+/* Dropdown Button */
+.dropbtn {
+  background-color: #034e64;
+  color: white;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover,
+.dropbtn:focus {
+  background-color: #2980b9;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 80px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 8px 8px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {
+  display: block;
+}
+
+#no-polls {
+  text-align: center;
+  margin-top: 20vh;
 }

@@ -1,62 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Question detail</title>
-    <link rel="stylesheet" href="/css/home.css" />
-  </head>
-  <body>
-    <header>
-      <nav>
-        <div class="logo">
-          <h1>DoubtPolls</h1>
-        </div>
-        <ul>
-          <% if(typeof user != 'undefined') { %>
-          <li>Hello <%= user.username %></li>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Question detail</title>
+  <link rel="stylesheet" href="/css/home.css" />
+</head>
+
+<body>
+  <header>
+    <nav>
+      <div class="logo">
+        <h1>DoubtPolls</h1>
+      </div>
+      <ul>
+        <% if(typeof user !='undefined' ) { %>
+          <li>Hello <div class="dropdown">
+              <button onclick="myFunction()" class="dropbtn">
+                <%= user.username %>
+              </button>
+              <div id="myDropdown" class="dropdown-content">
+                <a href="/mypolls">My Polls</a>
+              </div>
+          </li>
           <li><a href="/logout/">Logout</a></li>
           <% } else { %>
-          <li><a href="/login/">Login</a></li>
-          <li><a href="/register/">Register</a></li>
-          <% } %>
-        </ul>
-      </nav>
-    </header>
-    <div class="choice">
-      <form action="" method="post">
-        <input type="hidden" />
-        <fieldset>
-          <legend><h1><%= problems.question %></h1></legend>
-          <% for(var i=0; i<problems.choice.length ; i++) { %>
-            <label for="choice<%=i%>">
-              <input type="radio" name="choice" id="choice<%=i%>" value="choice<%=i%>" required/>
-              <span><%= problems.choice[i].name %></span>
+            <li><a href="/login/">Login</a></li>
+            <li><a href="/register/">Register</a></li>
+            <% } %>
+              </div>
+      </ul>
+    </nav>
+  </header>
+  <div class="choice">
+    <form action="" method="post">
+      <input type="hidden" />
+      <fieldset>
+        <legend>
+          <h1>
+            <%= problems.question %>
+          </h1>
+        </legend>
+        <% for(var i=0; i<problems.choice.length ; i++) { %>
+          <label for="choice<%=i%>">
+            <input type="radio" name="choice" id="choice<%=i%>" value="choice<%=i%>" required />
+            <span>
+              <%= problems.choice[i].name %>
+            </span>
           </label>
           <br />
           <% } %>
-        </fieldset>
-        <input type="submit" value="Vote" />
-      </form>
-      <br />
-      <p><%= message %></p>
-      <br />
-      
-    </div>
-    <div class="stats">
-      <fieldset>
-        <legend><h1>Poll stats</h1></legend>
-        <p>Choice -- Total votes</p>
-        <ul>
-          <% for(var i=0; i<problems.choice.length ; i++) { %>
+      </fieldset>
+      <input type="submit" value="Vote" />
+    </form>
+    <br />
+    <p>
+      <%= message %>
+    </p>
+    <br />
+
+  </div>
+  <div class="stats">
+    <fieldset>
+      <legend>
+        <h1>Poll stats</h1>
+      </legend>
+      <p>Choice -- Total votes</p>
+      <ul>
+        <% for(var i=0; i<problems.choice.length ; i++) { %>
           <li>
             <%= problems.choice[i].name %> -- <%= problems.choice[i].voteCount %>
-            votes
+                votes
           </li>
           <% } %>
-        </ul>
-      </fieldset>
-    </div>
-  </body>
+      </ul>
+    </fieldset>
+  </div>
+  <script src="/javascript/choice.js"></script>
+</body>
+
 </html>

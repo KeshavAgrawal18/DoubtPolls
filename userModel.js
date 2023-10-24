@@ -10,6 +10,7 @@ const UserSchema = new mongoose.Schema({
 const ProblemSchema = new mongoose.Schema({
   id: String,
   time: String,
+  owner: String,
   question: String,
   choice: [
     {

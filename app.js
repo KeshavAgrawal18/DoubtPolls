@@ -8,6 +8,7 @@ const bodyParser = require("body-parser");
 const modul = require("./userModel");
 const User = modul.user;
 const Problem = modul.problem;
+const ProblemOwner = modul.problemOwner;
 const PORT = process.env.PORT;
 const modu = require("./function");
 const ranNumGenerator = modu.rng;
@@ -111,6 +112,21 @@ app.get("/problems/:id", (req, res) => {
       console.error(error);
     });
 });
+
+app.get("/mypolls", (req, res) => {
+  Problem.find({ owner: req.user.username })
+    .then((problems) => {
+
+      res.render("user", {
+        user: req.user,
+        problems: problems,
+      });
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+});
+
 app.post("/search", (req, res) => {
   Problem.find()
     .then((problems) => {
@@ -168,15 +184,15 @@ app.post("/login", (req, res) => {
 
 app.post("/create", (req, res) => {
   let count = req.query.count;
+  let problem_id = ranNumGenerator;
   let problem = new Problem({
-    id: ranNumGenerator,
+    id: problem_id,
     time: time,
+    owner: req.user.username,
     question: req.body.question,
     choice: [],
   });
-  // console.log(problem);
-  // console.log(req.body);
-  // console.log("count: " + count);
+  
   for (let i = 1; i <= count; i++) {
     let cur = "choice" + i;
     problem.choice.push({
@@ -199,9 +215,6 @@ app.post("/problems/:id", (req, res) => {
         const arr = problems[0].usersVoted;
         for (let i in arr) {
           if (arr[i] === req.user.username) {
-            // console.log("problem after matching: " + problems[0]);
-            // res.redirect("/problems/" + req.params.id + "?message=failure");
-            // res.redirect("/");
             check = 1;
           }
         }
@@ -210,9 +223,7 @@ app.post("/problems/:id", (req, res) => {
           let choice_number = choice[6];
           problems[0].choice[choice_number].voteCount++;
 
-          // console.log("username: " + req.user.username);
           problems[0].usersVoted.push(req.user.username);
-          // console.log(problems[0]);
           Problem.updateOne({ id: req.params.id }, problems[0]).then(
             (result) => {
               // console.log("result: ");
