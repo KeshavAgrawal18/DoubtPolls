@@ -458,4 +458,5 @@ input:checked + .slider:before {
 
 .social-btn {
   height: 30px;
+  padding: 5px 0;
 }
