@@ -1,0 +1,14 @@
+<ul>
+    <% for(var i=0; i<problems.length ; i++) { %>
+      <div class="list-element">
+        <li>
+          <a href="problems/<%= problems[i].id %>/">
+            <%= problems[i].question %>
+          </a>
+          <span class="created-date">Created on: <%= problems[i].time %></span>
+        </li>
+        <span class="owner created-date" style="float: right;">Created by: <%= problems[i].owner %></span>
+        <br>
+      </div>
+      <% } %>
+  </ul>

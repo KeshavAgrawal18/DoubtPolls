@@ -3,18 +3,9 @@
   <main>
     <div id="mypoll">My Polls</div>
     <div class="question-list">
-      <ul>
-        <% for(var i=0; i<problems.length ; i++) { %>
-          <li>
-            <div class="list-element">
-              <a href="problems/<%= problems[i].id %>/">
-                <%= problems[i].question %>
-              </a>
-              <span class="created-date">Created on: <%= problems[i].time %></span>
-            </div>
-          </li>
-          <% } %>
-      </ul>
+
+      <%- include('partials/problem-list.ejs') %>
+      
       <% if(problems.length == 0) { %>
         <div id="no-polls">You have not created any polls.</div>
 
