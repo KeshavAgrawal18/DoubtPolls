@@ -1,39 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Home</title>
-  <link rel="stylesheet" href="/css/home.css" />
-</head>
-
-<body>
-  <header>
-    <nav>
-      <div class="logo">
-        <h1>DoubtPolls</h1>
-      </div>
-      <ul>
-        <% if(typeof user !='undefined' ) { %>
-          <li>Hello
-            <div class="dropdown">
-              <button onclick="myFunction()" class="dropbtn">
-                <%= user.username %>
-              </button>
-              <div id="myDropdown" class="dropdown-content">
-                <a href="/mypolls">My Polls</a>
-              </div>
-            </div>
-          </li>
-          <li><a href="/logout/">Logout</a></li>
-          <% } else { %>
-            <li><a href="/login/">Login</a></li>
-            <li><a href="/register/">Register</a></li>
-            <% } %>
-      </ul>
-    </nav>
-  </header>
+<%- include('partials/navbar.ejs') %>
 
   <main>
     <div class="question-list">
