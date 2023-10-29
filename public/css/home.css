@@ -324,7 +324,7 @@ button {
   background-color: #033747;
   text-align: center;
   color: white;
-  margin: 0 40% 0 40%;
+  margin: 0 40% 3% 40%;
   padding: 8px;
   font-weight: bold;
 }
@@ -453,5 +453,9 @@ input:checked + .slider:before {
 }
 
 .list-element:hover{
-  background-color: rgb(228, 224, 224);
+  background-color: rgb(235, 235, 235);
+}
+
+.social-btn {
+  height: 30px;
 }
