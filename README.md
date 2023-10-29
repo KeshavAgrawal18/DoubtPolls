@@ -18,7 +18,7 @@ This is a website which solves the problem of discussion of better by conducting
 
 5. **Poll Results**: After participating in a poll, users can view the results, including the number of votes for each option.
 
-6. **Poll Listing**: The homepage displays a list of all available polls, and users can filter by open, closed, or all polls.
+6. **Poll Listing**: The homepage displays a list of all available polls, and users can search by poll's name or view all polls.
 
 7. **Responsive Design**: The website is designed to work on various devices, including desktop and mobile.
 
@@ -30,8 +30,8 @@ This is a website which solves the problem of discussion of better by conducting
    - Use the "Log In" option to log in with your credentials.
 
 2. **Create a Poll**:
-   - Once logged in, you can create a new poll by clicking the "New Poll" button.
-   - Specify the poll question, options, and closing date.
+   - Once logged in, you can create a new poll by clicking the "Create a New Poll" button.
+   - Specify the poll question, options.
    - Click "Create Poll" to create the poll.
 
 3. **Participate in a Poll**:
@@ -40,3 +40,6 @@ This is a website which solves the problem of discussion of better by conducting
 
 4. **View Poll Results**:
    - After participating in a poll, you can view the results, including the number of votes for each option.
+  
+5. **User Profile**:
+   - Users can view their profile, which includes the polls they have created and the polls they have participated in.
