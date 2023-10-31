@@ -14,7 +14,7 @@ const modu = require("./function");
 const ranNumGenerator = modu.rng;
 const time = modu.time;
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   session({
     secret: process.env.SECRET,

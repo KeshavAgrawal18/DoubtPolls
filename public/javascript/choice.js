@@ -27,7 +27,6 @@ function add_more_choice() {
 }
 
 function myFunction() {
-  console.log("function called");
   document.getElementById("myDropdown").classList.toggle("show");
 }
 
