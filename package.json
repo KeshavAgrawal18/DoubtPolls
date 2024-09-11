@@ -4,14 +4,14 @@
   "description": "This software is for conducting polls between two conflicting topics afer authentication.",
   "main": "app.js",
   "scripts": {
-    "start": "concurrently \"node app.js\" \"node keepAlive.js\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm-run-all --parallel start-server keep-alive",
+    "start-server": "node app.js",
+    "keep-alive": "node keepAlive.js"
   },
   "author": "Keshav Agrawal",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.2",
-    "concurrently": "^9.0.0",
     "dotenv": "^16.3.1",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
