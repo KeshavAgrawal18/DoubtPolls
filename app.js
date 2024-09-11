@@ -8,7 +8,6 @@ const bodyParser = require("body-parser");
 const modul = require("./userModel");
 const User = modul.user;
 const Problem = modul.problem;
-const ProblemOwner = modul.problemOwner;
 const PORT = process.env.PORT;
 const modu = require("./function");
 const ranNumGenerator = modu.rng;
@@ -116,7 +115,6 @@ app.get("/problems/:id", (req, res) => {
 app.get("/mypolls", (req, res) => {
   Problem.find({ owner: req.user.username })
     .then((problems) => {
-
       res.render("user", {
         user: req.user,
         problems: problems,
@@ -192,7 +190,7 @@ app.post("/create", (req, res) => {
     question: req.body.question,
     choice: [],
   });
-  
+
   for (let i = 1; i <= count; i++) {
     let cur = "choice" + i;
     problem.choice.push({
